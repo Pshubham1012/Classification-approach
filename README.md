@@ -86,18 +86,44 @@ note: The JHU data has been categorized into three folders based on density: low
    JHU data is segregated into low, medium, and high using the following code file
 
 ```
-python initial_labeling.py --dataset <dataset name: Jhu> --input-dataset-path <original data directory> --output-dataset-path <JHU_medium><JHU_high><JHU_low> 
+python initial_labeling.py --dataset <dataset name: jhu> --input-dataset-path <original data directory> --output-dataset-path <new_data>/<JHU_medium><JHU_high><JHU_low> 
 ```
 
 3. Training
 
 ```
-python train.py --dataset <dataset name: qnrf, sha, shb or nwpu> --data-dir <path to dataset> --device <gpu device id>
+python train.py --dataset <dataset name: jhu> --data-dir <path to dataset> --device <gpu device id>
 ```
 
-4. Test
+4. Test(not needed)
 
 ```
-python test.py --model-path <path of the model to be evaluated> --data-path <directory for the dataset> --dataset <dataset name: qnrf, sha, shb or nwpu>
+python test_original.py --model-path <path of the model to be evaluated> --data-path <directory for the dataset> --dataset <dataset name: qnrf, sha, shb or nwpu>
 ```
-**do the same for stage 2 and stage 3**
+**Stage 2:**
+1. Data directory structure
+  Data to train the classifier
+```
+-- new_data
+   --train
+     -- M1
+     -- M2
+     -- M3
+   --validation
+     -- M1
+     -- M2
+     -- M3
+```
+2. Data preprocess
+
+   JHU data is segregated into M1, M2, and M3 with the help of models pre-trained in the previous stage using the following code file
+
+```
+python dm_count_classifier_2nd_labels.py --dataset <dataset name: jhu> --input-dataset-path <original data directory> --output-dataset-path <M1><M2><M3> 
+```
+
+3. Training
+  classifier Resnet-18 trained using the following file
+```
+python crowd_classification_2nd classifier.py --dataset <dataset name: jhu> --data-dir <path to dataset> --device <gpu device id>
+```
