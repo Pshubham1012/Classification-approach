@@ -1,2 +1,2 @@
 # Classification-approach
-<img src = "./images/dm count.png" width = 600 height=300 >
+<img src = "./images/dm count.png" style="width: 50%; height: 50%;" >
