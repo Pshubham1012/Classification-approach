@@ -127,3 +127,21 @@ python dm_count_classifier_2nd_labels.py --dataset <dataset name: jhu> --input-d
 ```
 python crowd_classification_2nd classifier.py --dataset <dataset name: jhu> --data-dir <path to dataset> --device <gpu device id>
 ```
+
+**Stage 3:**
+1. Data directory structure
+   
+```
+-- data
+   --test_data
+      -- ground-truth
+      -- images
+```
+
+2.Testing
+
+  Here we use all models pre-trained in previous stages to get the final prediction on test images.
+
+```
+python crowd_classification_2nd classifier.py --dataset <dataset name: jhu> --data-dir <path to dataset> --device <gpu device id>
+```
