@@ -13,25 +13,32 @@ The overall architecture of the proposed classification net mainly consists of t
 
 **i) Initial pretraining stage:** 
 These three separate DM-count models are trained on high, low, and medium-density crowd data.
-<div style="display: flex; justify-content: center;">
-  <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" style="width: 50%; height: 50%;">
-</div>
+<p align="center">
+  <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" width="50%" height="50%">
+</p>
+
 
    
 
 **ii) Classifier training:**
 In this, we segregated the crowd data into three classes using the three models pertained in the previous stage and then trained the Resnet_18 Classifier model on it.
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st2.png" alt="Image" style="width: 50%; height: 50%;">
+<p align="center">
+  <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st2.png" alt="Image" style="width: 50%; height: 50%;">
+</p>
 
 **iii)Final stage:**
 In this we use all models pre-trained in stages i and ii to get the final prediction on the unknown image.
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st3.png" alt="Image" style="width: 70%; height: 70%;">
+<p align="center">
+  <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st3.png" alt="Image" style="width: 70%; height: 70%;">
+</p>
 
 The **DM-count** model used is the most simple and state-of-the-art crowd-counting model, shown below:
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/dm count.png" alt="Image" style="width: 50%; height: 50%;">
+<p align="center">
+  <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/dm count.png" alt="Image" style="width: 50%; height: 50%;">
+</p>
 
 It consists of a VGG-16 backbone, pre-trained on Imagenet data and a regression head consisting of three convolution layers which give the density map. the overall network is finetuned on labelled crowd-counting data.
 ## Prerequisites
