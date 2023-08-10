@@ -17,7 +17,7 @@ These three separate DM-count models are trained on high, low, and medium-densit
   <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" style="width: 50%; height: 50%;">
 </div>
 
-   <img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" style="width: 50%; height: 50%;">
+   
 
 **ii) Classifier training:**
 In this, we segregated the crowd data into three classes using the three models pertained in the previous stage and then trained the Resnet_18 Classifier model on it.
