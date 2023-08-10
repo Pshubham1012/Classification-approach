@@ -1,5 +1,5 @@
 
-# Crowd counting: Classification based Technique
+# Crowd counting: Classification-based Technique
 
 Crowd counting and crowd analysis are essential research areas in computer vision and image processing. They involve estimating the number of people in a crowd and analysing their behaviour, movement patterns, and interactions. This field has seen significant advancements in recent years due to its broad applications in various domains, such as crowd management, surveillance, urban planning, and event organization.
 
@@ -9,24 +9,28 @@ Crowd counting and crowd analysis are essential research areas in computer visio
 ![densities](https://github.com/Pshubham1012/Classification-approach/assets/124425044/ca18705a-8db4-4bfd-a1ff-fe2b64d25719)
 
 ## Network architecture
-The overall architecture of the proposed classification net mainly consists of two components: DM-count model for crowd counting and Resnet_18 for classsification. And it has been executed in three stages i) Initial pretraining stage ii) Classifier training stage iii) Final stage.
+The overall architecture of the proposed classification net mainly consists of two components: DM-count model for crowd counting and Resnet_18 for classification. And it has been executed in three stages i) The initial pretraining stage ii) The classifier training stage iii) The final stage.
 
 **i) Initial pretraining stage:** 
-In this three seperate DM-count models are trained on high, low, and medium density crowd data.
-![image](https://github.com/Pshubham1012/Classification-approach/assets/124425044/6a276e5b-648e-4150-81a1-d901baec8f13)
+These three separate DM-count models are trained on high, low, and medium-density crowd data.
+
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" style="width: 70%; height: 70%;">
+
 **ii) Classifier training:**
-In this we segregated the crowd data in three classes using the three models pretained in previous stage and then train the Resnet_18 Classifier model on it.
-![image](https://github.com/Pshubham1012/Classification-approach/assets/124425044/691b00e2-3db7-4607-a0a3-2f89c4fd2e29)
+In this, we segregated the crowd data into three classes using the three models pertained in the previous stage and then trained the Resnet_18 Classifier model on it.
+
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st2.png" alt="Image" style="width: 70%; height: 70%;">
+
 **iii)Final stage:**
-In this we use all models pretrained in stage i and ii to get the final prediction on unknown image.
-![image](https://github.com/Pshubham1012/Classification-approach/assets/124425044/89337109-259a-4841-8de9-d734384b9e95)
+In this we use all models pre-trained in stages i and ii to get the final prediction on the unknown image.
 
-The **DM-count** model used is the most simple and state of art crowd counting model, shown below:
-![dm count](https://github.com/Pshubham1012/Classification-approach/assets/124425044/0e4585c1-474a-4b58-ade4-aadadb77a14d)
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st3.png" alt="Image" style="width: 90%; height: 90%;">
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/dm count.png" alt="Image" style="width: 50%; height: 50%;">
+The **DM-count** model used is the most simple and state-of-the-art crowd-counting model, shown below:
 
-It is consist of VGG-16 backbone, pretrained on Imagenet data and regression head consist of threee convolution layers which gives the density map. overall network is finetuned on labelled crowd counting data.
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/dm count.png" alt="Image" style="width: 70%; height: 70%;">
+
+It consists of a VGG-16 backbone, pre-trained on Imagenet data and a regression head consisting of three convolution layers which give the density map. the overall network is finetuned on labelled crowd-counting data.
 ## Prerequisites
 
 Python 3.x
@@ -41,7 +45,7 @@ Dataset download
 
 **Stage1:**
 1. Data directory structure
-Place the dataset in `../data/` folder. So the directory structure should look like the following:
+Place the dataset in the `../data/` folder. So the directory structure should look like the following:
 ```
 -- data
    --ST_partA
@@ -55,7 +59,7 @@ Place the dataset in `../data/` folder. So the directory structure should look l
 
 2. Data preprocess
 
-Due to large sizes of images in QNRF and NWPU datasets, we preprocess these two datasets.
+Due to the large sizes of images in the QNRF and NWPU datasets, we preprocess these two datasets.
 
 ```
 python preprocess_dataset.py --dataset <dataset name: qnrf or nwpu> --input-dataset-path <original data directory> --output-dataset-path <processed data directory> 
@@ -72,4 +76,4 @@ python train.py --dataset <dataset name: qnrf, sha, shb or nwpu> --data-dir <pat
 ```
 python test.py --model-path <path of the model to be evaluated> --data-path <directory for the dataset> --dataset <dataset name: qnrf, sha, shb or nwpu>
 ```
-**do the sam efor stage 2 and stage 3**
+**do the same for stage 2 and stage 3**
