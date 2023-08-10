@@ -14,21 +14,21 @@ The overall architecture of the proposed classification net mainly consists of t
 **i) Initial pretraining stage:** 
 These three separate DM-count models are trained on high, low, and medium-density crowd data.
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" style="width: 70%; height: 70%;">
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st1.png" alt="Image" style="width: 60%; height: 60%;">
 
 **ii) Classifier training:**
 In this, we segregated the crowd data into three classes using the three models pertained in the previous stage and then trained the Resnet_18 Classifier model on it.
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st2.png" alt="Image" style="width: 70%; height: 70%;">
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st2.png" alt="Image" style="width: 60%; height: 60%;">
 
 **iii)Final stage:**
 In this we use all models pre-trained in stages i and ii to get the final prediction on the unknown image.
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st3.png" alt="Image" style="width: 90%; height: 90%;">
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/st3.png" alt="Image" style="width: 80%; height: 80%;">
 
 The **DM-count** model used is the most simple and state-of-the-art crowd-counting model, shown below:
 
-<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/dm count.png" alt="Image" style="width: 70%; height: 70%;">
+<img src="https://github.com/Pshubham1012/Classification-approach/raw/main/images/dm count.png" alt="Image" style="width: 60%; height: 60%;">
 
 It consists of a VGG-16 backbone, pre-trained on Imagenet data and a regression head consisting of three convolution layers which give the density map. the overall network is finetuned on labelled crowd-counting data.
 ## Prerequisites
@@ -46,23 +46,36 @@ Dataset download
 **Stage1:**
 1. Data directory structure
 Place the dataset in the `../data/` folder. So the directory structure should look like the following:
+note: The JHU data has been categorized into three folders based on density: low, medium, and large.
 ```
 -- data
-   --ST_partA
-     -- test_data
-      -- ground-truth
-      -- images
+   --JHU_low
      -- train_data
       -- ground-truth
       -- images
+     -- validation_data
+      -- ground-truth
+      -- images
+   --JHU_medium
+     -- train_data
+      -- ground-truth
+      -- images
+     -- validation_data
+      -- ground-truth
+      -- images
+   --JHU_high
+     -- train_data
+      -- ground-truth
+      -- images
+     -- validation_data
+      -- ground-truth
+      -- images
 ```
-
 2. Data preprocess
-
-Due to the large sizes of images in the QNRF and NWPU datasets, we preprocess these two datasets.
+JHU data is segregated into low, medium, and high using the following code file
 
 ```
-python preprocess_dataset.py --dataset <dataset name: qnrf or nwpu> --input-dataset-path <original data directory> --output-dataset-path <processed data directory> 
+python initial_labeling.py --dataset <dataset name: Jhu> --input-dataset-path <original data directory> --output-dataset-path <JHU_medium><JHU_high><JHU_low> 
 ```
 
 3. Training
