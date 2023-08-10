@@ -1,5 +1,5 @@
 
-# Crowd counting: Classification-based Technique
+# Crowd counting: Classification-Based Technique
 
 Crowd counting and crowd analysis are essential research areas in computer vision and image processing. They involve estimating the number of people in a crowd and analysing their behaviour, movement patterns, and interactions. This field has seen significant advancements in recent years due to its broad applications in various domains, such as crowd management, surveillance, urban planning, and event organization.
 
