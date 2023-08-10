@@ -73,7 +73,7 @@ note: The JHU data has been categorized into three folders based on density: low
 ```
 2. Data preprocess
 
-JHU data is segregated into low, medium, and high using the following code file
+   JHU data is segregated into low, medium, and high using the following code file
 
 ```
 python initial_labeling.py --dataset <dataset name: Jhu> --input-dataset-path <original data directory> --output-dataset-path <JHU_medium><JHU_high><JHU_low> 
