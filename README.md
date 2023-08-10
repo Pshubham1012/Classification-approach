@@ -138,7 +138,7 @@ python crowd_classification_2nd classifier.py --dataset <dataset name: jhu> --da
       -- images
 ```
 
-2.Testing
+2. Testing
 
   Here we use all models pre-trained in previous stages to get the final prediction on test images.
 
